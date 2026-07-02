@@ -20,9 +20,6 @@ export function Nav() {
           </div>
           <div className="hidden flex-col leading-tight sm:flex">
             <span className="font-display text-sm font-semibold tracking-tight">Arpan Sarkar</span>
-            <span className="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground">
-              FULL-STACK
-            </span>
           </div>
         </a>
         <nav className="hidden items-center gap-8 md:flex">

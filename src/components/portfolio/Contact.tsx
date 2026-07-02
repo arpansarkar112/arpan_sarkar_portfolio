@@ -14,12 +14,12 @@ import {
 const EMAIL = "arpansarkar112@gmail.com";
 const PHONE = "+358403286143";
 
+import { submitContactFormAction } from "@/server/contact";
+
 export function Contact() {
   const [copied, setCopied] = useState(false);
   const [open, setOpen] = useState(false);
   const [sending, setSending] = useState(false);
-  const [captcha, setCaptcha] = useState(() => createCaptcha());
-  const [captchaInput, setCaptchaInput] = useState("");
 
   const copyEmail = async () => {
     try {
@@ -35,11 +35,10 @@ export function Contact() {
   };
 
   const resetForm = () => {
-    setCaptcha(createCaptcha());
-    setCaptchaInput("");
+    // Intentionally left blank or handle other resets if needed
   };
 
-  const submitContactForm = (event: FormEvent<HTMLFormElement>) => {
+  const submitContactForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
@@ -47,32 +46,27 @@ export function Contact() {
     const email = String(formData.get("email") ?? "").trim();
     const subject = String(formData.get("subject") ?? "").trim();
     const message = String(formData.get("message") ?? "").trim();
-    const captchaAnswer = String(formData.get("captcha") ?? "").trim();
 
     if (!name || !email || !subject || !message) {
       toast.error("Please fill in your name, email, subject, and message.");
       return;
     }
 
-    if (captchaAnswer !== String(captcha.answer)) {
-      toast.error("Captcha is incorrect. Try again.");
-      setCaptchaInput("");
-      setCaptcha(createCaptcha());
-      return;
-    }
-
     setSending(true);
 
-    const body = [`Name: ${name}`, `Email: ${email}`, `Subject: ${subject}`, "", message].join(
-      "\n",
-    );
-
-    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(`Hire me: ${subject}`)}&body=${encodeURIComponent(body)}`;
-
-    toast.success("Opening your mail client.");
-    setSending(false);
-    setOpen(false);
-    resetForm();
+    try {
+      await submitContactFormAction({
+        data: { name, email, subject, message },
+      });
+      toast.success("Message sent successfully! I will get back to you soon.");
+      setOpen(false);
+      resetForm();
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to send message. Please try again or email directly.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -232,15 +226,6 @@ function Field({
       />
     </div>
   );
-}
-
-function createCaptcha() {
-  const first = Math.floor(Math.random() * 8) + 2;
-  const second = Math.floor(Math.random() * 8) + 2;
-  return {
-    prompt: `${first} + ${second} = ?`,
-    answer: first + second,
-  };
 }
 
 function ContactLink({

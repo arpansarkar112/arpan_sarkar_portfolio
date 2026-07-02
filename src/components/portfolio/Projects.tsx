@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowUpRight, ChevronDown, Github } from "lucide-react";
 import { projectsData, Project } from "@/lib/projects";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function Projects() {
   return (
@@ -11,11 +12,13 @@ export function Projects() {
         note="A WORKING ARCHIVE OF FULL-STACK SYSTEMS"
       />
       <div className="mx-auto max-w-350 px-6 pb-16 md:px-10">
-        <div className="grid auto-rows-[minmax(240px,auto)] grid-cols-1 gap-px bg-hairline md:grid-cols-12">
-          {projectsData.map((p) => (
-            <ProjectCard key={p.id} project={p} />
-          ))}
-        </div>
+        <Reveal delay={0.1}>
+          <div className="grid auto-rows-[minmax(240px,auto)] grid-cols-1 gap-px bg-hairline md:grid-cols-12">
+            {projectsData.map((p) => (
+              <ProjectCard key={p.id} project={p} />
+            ))}
+          </div>
+        </Reveal>
 
         {/* Archive CTA */}
         <div className="mt-12 flex flex-col items-center gap-4 border-t border-hairline pt-12">
@@ -116,22 +119,24 @@ export function SectionHeader({
   note?: string;
 }) {
   return (
-    <div className="mx-auto max-w-350 px-6 pb-10 pt-24 md:px-10">
-      <div className="grid grid-cols-12 items-end gap-6 border-b border-hairline pb-8">
-        <div className="col-span-12 md:col-span-8">
-          <p className="font-mono-tech text-[11px] uppercase tracking-[0.28em] text-accent">
-            {eyebrow}
-          </p>
-          <h2 className="mt-4 font-display text-5xl font-bold leading-[0.95] text-foreground md:text-7xl">
-            {title}
-          </h2>
+    <Reveal>
+      <div className="mx-auto max-w-350 px-6 pb-10 pt-24 md:px-10">
+        <div className="grid grid-cols-12 items-end gap-6 border-b border-hairline pb-8">
+          <div className="col-span-12 md:col-span-8">
+            <p className="font-mono-tech text-[11px] uppercase tracking-[0.28em] text-accent">
+              {eyebrow}
+            </p>
+            <h2 className="mt-4 font-display text-5xl font-bold leading-[0.95] text-foreground md:text-7xl">
+              {title}
+            </h2>
+          </div>
+          {note && (
+            <p className="col-span-12 max-w-sm font-mono-tech text-xs uppercase tracking-widest text-muted-foreground md:col-span-4 md:text-right">
+              {note}
+            </p>
+          )}
         </div>
-        {note && (
-          <p className="col-span-12 max-w-sm font-mono-tech text-xs uppercase tracking-widest text-muted-foreground md:col-span-4 md:text-right">
-            {note}
-          </p>
-        )}
       </div>
-    </div>
+    </Reveal>
   );
 }
