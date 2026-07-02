@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { Check, Github, Linkedin, Mail, MessageSquareText, Copy, RefreshCcw } from "lucide-react";
+import { Check, Github, Linkedin, Mail, MessageSquareText, Copy, RefreshCcw, Facebook, Phone } from "lucide-react";
 import { toast } from "sonner";
 import { DiscordIcon } from "./icons";
 import {
@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 
 const EMAIL = "arpansarkar112@gmail.com";
+const PHONE = "+358403286143";
 
 export function Contact() {
   const [copied, setCopied] = useState(false);
@@ -75,18 +76,18 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="border-b border-hairline bg-foreground text-background">
+    <section id="contact" className="border-b border-hairline bg-background text-foreground">
       <div className="mx-auto grid max-w-350 grid-cols-12 gap-6 px-6 py-24 md:px-10 md:py-32">
         <div className="col-span-12 md:col-span-7">
           <p className="font-mono-tech text-[11px] uppercase tracking-[0.28em] text-accent">
-            005 — Contact
+            008 — Contact
           </p>
           <h2 className="mt-4 max-w-3xl font-display text-6xl font-bold leading-[0.9] md:text-7xl">
             Looking for
             <br />
             <span className="italic opacity-70">a developer?</span>
           </h2>
-          <p className="mt-8 max-w-lg text-base text-background/70">
+          <p className="mt-8 max-w-lg text-base text-foreground/70">
             Open to full-stack roles, engineering collaborations, projects and internships. Use the
             button below to open a quick message form.
           </p>
@@ -100,12 +101,12 @@ export function Contact() {
               }}
             >
               <DialogTrigger asChild>
-                <button className="inline-flex items-center gap-3 border border-background bg-background px-5 py-3.5 font-mono-tech text-xs uppercase tracking-widest text-foreground transition hover:bg-accent hover:border-accent hover:text-accent-foreground">
+                <button className="inline-flex items-center gap-3 border border-foreground bg-foreground px-5 py-3.5 font-mono-tech text-xs uppercase tracking-widest text-background transition hover:bg-accent hover:border-accent hover:text-accent-foreground">
                   <MessageSquareText className="h-4 w-4" />
                   Hire me
                 </button>
               </DialogTrigger>
-              <DialogContent className="border-background/20 bg-foreground text-background sm:max-w-2xl">
+              <DialogContent className="border-foreground/20 bg-background text-foreground sm:max-w-2xl">
                 <DialogHeader className="text-left sm:text-left">
                   <DialogTitle className="font-display text-3xl md:text-4xl">
                     Send a message
@@ -128,14 +129,14 @@ export function Contact() {
                     placeholder="Full-stack role, collaboration, freelance project"
                   />
                   <div>
-                    <label className="mb-2 block font-mono-tech text-[10px] uppercase tracking-widest text-background/60">
+                    <label className="mb-2 block font-mono-tech text-[10px] uppercase tracking-widest text-foreground/60">
                       Message
                     </label>
                     <textarea
                       name="message"
                       rows={6}
                       placeholder="Share the context, timeline, and what success looks like."
-                      className="w-full rounded-none border border-background/20 bg-background/10 px-4 py-3 font-sans text-sm text-background outline-none transition placeholder:text-background/35 focus:border-accent focus:bg-background/15"
+                      className="w-full rounded-none border border-foreground/20 bg-foreground/5 px-4 py-3 font-sans text-sm text-foreground outline-none transition placeholder:text-foreground/40 focus:border-accent focus:bg-foreground/10"
                     />
                   </div>
 
@@ -143,7 +144,7 @@ export function Contact() {
                     <button
                       type="submit"
                       disabled={sending}
-                      className="inline-flex items-center gap-3 border border-background bg-background px-5 py-3.5 font-mono-tech text-xs uppercase tracking-widest text-foreground transition hover:bg-accent hover:border-accent hover:text-accent-foreground disabled:cursor-wait disabled:opacity-70"
+                      className="inline-flex items-center gap-3 border border-foreground bg-foreground px-5 py-3.5 font-mono-tech text-xs uppercase tracking-widest text-background transition hover:bg-accent hover:border-accent hover:text-accent-foreground disabled:cursor-wait disabled:opacity-70"
                     >
                       <Mail className="h-4 w-4" />
                       {sending ? "Opening mail client" : "Send message"}
@@ -155,9 +156,9 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="col-span-12 flex flex-col justify-end gap-6 border-t border-background/20 pt-8 md:col-span-5 md:border-l md:border-t-0 md:pl-8 md:pt-0">
+        <div className="col-span-12 flex flex-col justify-end gap-6 border-t border-foreground/10 pt-8 md:col-span-5 md:border-l md:border-t-0 md:pl-8 md:pt-0">
           <div>
-            <p className="font-mono-tech text-[10px] uppercase tracking-widest text-background/60">
+            <p className="font-mono-tech text-[10px] uppercase tracking-widest text-foreground/60">
               / Elsewhere
             </p>
             <ul className="mt-4 space-y-2 font-mono-tech text-sm">
@@ -172,15 +173,21 @@ export function Contact() {
                 Icon={Linkedin}
               />
               <ContactLink
+                href="https://www.facebook.com/arpan.user"
+                label="Facebook / arpan.user"
+                Icon={Facebook}
+              />
+              <ContactLink
                 href="https://discord.com/users/arpan0418"
                 label="Discord / arpan0418"
                 Icon={DiscordIcon}
               />
               <ContactLink href={`mailto:${EMAIL}`} label="Mail / arpansarkar112" Icon={Mail} />
+              <ContactLink href={`tel:${PHONE}`} label={`Phone / ${PHONE}`} Icon={Phone} />
             </ul>
           </div>
           <div>
-            <p className="font-mono-tech text-[10px] uppercase tracking-widest text-background/60">
+            <p className="font-mono-tech text-[10px] uppercase tracking-widest text-foreground/60">
               / Location
             </p>
             <p className="mt-3 font-display text-xl">Helsinki, Finland — UTC +3:00</p>
@@ -210,7 +217,7 @@ function Field({
     <div>
       <label
         htmlFor={name}
-        className="mb-2 block font-mono-tech text-[10px] uppercase tracking-widest text-background/60"
+        className="mb-2 block font-mono-tech text-[10px] uppercase tracking-widest text-foreground/60"
       >
         {label}
       </label>
@@ -221,7 +228,7 @@ function Field({
         placeholder={placeholder}
         value={value}
         onChange={(event) => onChange?.(event.target.value)}
-        className="w-full rounded-none border border-background/20 bg-background/10 px-4 py-3 font-sans text-sm text-background outline-none transition placeholder:text-background/35 focus:border-accent focus:bg-background/15"
+        className="w-full rounded-none border border-foreground/20 bg-foreground/5 px-4 py-3 font-sans text-sm text-foreground outline-none transition placeholder:text-foreground/40 focus:border-accent focus:bg-foreground/10"
       />
     </div>
   );
@@ -251,7 +258,7 @@ function ContactLink({
         href={href}
         target="_blank"
         rel="noreferrer"
-        className="group flex items-center justify-between gap-3 border-b border-background/20 py-2 transition hover:border-accent hover:text-accent"
+        className="group flex items-center justify-between gap-3 border-b border-foreground/10 py-2 transition hover:border-accent hover:text-accent"
       >
         <span className="flex items-center gap-3">
           <Icon className="h-4 w-4" />

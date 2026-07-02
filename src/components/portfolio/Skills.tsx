@@ -89,8 +89,8 @@ export function Skills() {
   return (
     <section id="skills" className="border-b border-hairline">
       <SectionHeader
-        eyebrow="003 — Skills & tech stack"
-        title="A living matrix."
+        eyebrow="004 — Skills & tech stack"
+        title="Development Stack"
         note="HOVER A NODE — INSPECT THE STACK"
       />
       <div className="mx-auto max-w-350 px-6 pb-24 md:px-10">

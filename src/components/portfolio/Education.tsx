@@ -57,12 +57,12 @@ const EDU: Edu[] = [
 ];
 
 export function Education() {
-  const [open, setOpen] = useState<string | null>("E01");
+  const [open, setOpen] = useState<string | null>(null);
 
   return (
     <section id="education" className="border-b border-hairline bg-stone">
       <SectionHeader
-        eyebrow="004 — Education"
+        eyebrow="005 — Education"
         title="My background"
         note="ACADEMIC TIMELINE · FINLAND"
       />

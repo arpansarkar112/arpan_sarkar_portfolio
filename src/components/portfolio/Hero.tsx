@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUpRight, Download, Facebook } from "lucide-react";
 import { DiscordIcon } from "./icons";
 
 export function Hero() {
@@ -26,8 +26,8 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Headline */}
-        <div className="col-span-12 lg:col-span-9">
+        {/* Headline and Role */}
+        <div className="col-span-12 lg:col-span-8">
           <p className="animate-rise font-mono-tech text-[11px] uppercase tracking-[0.28em] text-accent">
             001 — Portfolio / v.2026
           </p>
@@ -36,25 +36,32 @@ export function Hero() {
             <br />
             <span className="italic text-muted-foreground">Sarkar</span>
           </h1>
-        </div>
-
-        {/* Right meta */}
-        <div className="col-span-12 mt-8 flex flex-col justify-end gap-6 border-l-0 lg:col-span-3 lg:mt-0 lg:border-l lg:border-hairline lg:pl-8">
-          <div>
+          <div className="animate-rise mt-8">
             <p className="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground">
               / Role
             </p>
-            <p className="mt-2 font-display text-lg font-semibold leading-snug text-foreground">
-              Graduate Automation Engineer &<br /> Full-Stack Developer
+            <p className="mt-2 font-mono-tech text-sm md:text-lg uppercase tracking-widest text-foreground">
+              Full-Stack Developer
             </p>
+            <div className="mt-6">
+              <p className="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground">
+                / Stack
+              </p>
+              <p className="mt-2 font-mono-tech text-xs text-foreground">
+                MERN · TypeScript · C++ · Prisma
+              </p>
+            </div>
           </div>
-          <div>
-            <p className="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground">
-              / Stack
-            </p>
-            <p className="mt-2 font-mono-tech text-xs text-foreground">
-              MERN · TypeScript · C++ · Prisma
-            </p>
+        </div>
+
+        {/* Right meta and Image */}
+        <div className="col-span-12 mt-8 flex flex-col justify-end gap-6 border-l-0 lg:col-span-4 lg:mt-0 lg:border-l lg:border-hairline lg:pl-8">
+          <div className="relative w-48 md:w-64 lg:w-full aspect-[4/5] overflow-hidden border border-hairline mb-2 lg:mb-auto">
+            <img 
+              src="/profile.jpg" 
+              alt="Arpan Sarkar" 
+              className="w-full h-full object-cover" 
+            />
           </div>
         </div>
 
@@ -68,13 +75,17 @@ export function Hero() {
             </p>
           </div>
           <div className="col-span-12 flex flex-col justify-end gap-4 md:col-span-5 md:items-end">
-            <a
-              href="#work"
-              className="group inline-flex items-center gap-3 border border-foreground bg-foreground px-5 py-3 font-mono-tech text-xs uppercase tracking-widest text-background transition hover:bg-accent hover:border-accent hover:text-accent-foreground"
-            >
-              View projects
-              <ArrowUpRight className="h-4 w-4 transition -rotate-0 group-hover:rotate-45" />
-            </a>
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href="https://docs.google.com/document/d/10bHQFbyfiHPb7sKEhcorryNI7zMFS_cpfXbYal41TZ8/export?format=pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 border border-foreground bg-transparent px-5 py-3 font-mono-tech text-xs uppercase tracking-widest text-foreground transition hover:bg-foreground hover:text-background"
+              >
+                Resume
+                <Download className="h-4 w-4 transition-transform group-hover:translate-y-1" />
+              </a>
+            </div>
             <SocialDock />
           </div>
         </div>
@@ -102,6 +113,7 @@ function SocialDock() {
   const socials = [
     { href: "https://github.com/arpansarkar112", label: "GitHub", Icon: Github },
     { href: "https://www.linkedin.com/in/arpan-sarkar00", label: "LinkedIn", Icon: Linkedin },
+    { href: "https://www.facebook.com/arpan.user", label: "Facebook", Icon: Facebook },
     { href: "https://discord.com/users/arpan0418", label: "Discord", Icon: DiscordIcon },
     { href: "mailto:arpansarkar112@gmail.com", label: "Email", Icon: Mail },
   ];

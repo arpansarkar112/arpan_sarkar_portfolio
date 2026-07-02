@@ -101,7 +101,7 @@ export function AskArpanAI() {
         {/* Left column: sell */}
         <div className="col-span-12 lg:col-span-5 lg:pr-12">
           <p className="font-mono-tech text-[11px] uppercase tracking-[0.28em] text-accent">
-            006 — Interact with me
+            007 — Interact with me
           </p>
           <h2 className="mt-4 font-display text-5xl font-bold leading-[0.95] text-foreground md:text-6xl uppercase">
             RUN QUERY
