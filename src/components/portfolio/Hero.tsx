@@ -1,7 +1,9 @@
 import { Github, Linkedin, Mail, ArrowUpRight, Download, Facebook } from "lucide-react";
 import { DiscordIcon } from "./icons";
+import { useTranslation } from "react-i18next";
 
 export function Hero() {
+  const { t } = useTranslation();
   const now = new Date().toISOString().slice(0, 10);
   return (
     <section id="top" className="relative border-b border-hairline">
@@ -15,10 +17,10 @@ export function Hero() {
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
             </span>
             <span className="font-mono-tech text-[11px] uppercase tracking-widest text-foreground">
-              System status
+              {t("hero.systemStatus")}
             </span>
             <span className="font-mono-tech text-[11px] uppercase tracking-widest text-muted-foreground">
-              / Available for full-stack roles
+              {t("hero.availableRole")}
             </span>
           </div>
           <div className="hidden font-mono-tech text-[11px] uppercase tracking-widest text-muted-foreground md:block">
@@ -29,7 +31,7 @@ export function Hero() {
         {/* Headline and Role */}
         <div className="col-span-12 lg:col-span-8">
           <p className="animate-rise font-mono-tech text-[11px] uppercase tracking-[0.28em] text-accent">
-            001 — Portfolio / v.2026
+            {t("hero.portfolioV")}
           </p>
           <h1 className="animate-rise mt-6 font-display text-[15vw] font-bold leading-[0.88] tracking-tight text-foreground md:text-[9.5rem]">
             Arpan
@@ -38,14 +40,14 @@ export function Hero() {
           </h1>
           <div className="animate-rise mt-8">
             <p className="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground">
-              / Role
+              {t("hero.roleLabel")}
             </p>
             <p className="mt-2 font-mono-tech text-sm md:text-lg uppercase tracking-widest text-foreground">
-              Full-Stack Developer
+              {t("hero.role")}
             </p>
             <div className="mt-6">
               <p className="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground">
-                / Stack
+                {t("hero.stackLabel")}
               </p>
               <p className="mt-2 font-mono-tech text-xs text-foreground">
                 MERN · TypeScript · C++ · Prisma
@@ -69,9 +71,7 @@ export function Hero() {
         <div className="col-span-12 mt-10 grid grid-cols-12 gap-6 border-t border-hairline pt-8 md:mt-14">
           <div className="col-span-12 md:col-span-7">
             <p className="max-w-2xl font-display text-2xl leading-snug text-foreground md:text-3xl">
-              Bridging <span className="text-accent">precision engineering</span> with
-              modern web architecture to deliver reliable and intelligent
-              full-stack systems.
+              {t("hero.tagline1")}<span className="text-accent">{t("hero.taglineHighlight")}</span>{t("hero.tagline2")}
             </p>
           </div>
           <div className="col-span-12 flex flex-col justify-end gap-4 md:col-span-5 md:items-end">
@@ -82,7 +82,7 @@ export function Hero() {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 border border-foreground bg-transparent px-5 py-3 font-mono-tech text-xs uppercase tracking-widest text-foreground transition hover:bg-foreground hover:text-background"
               >
-                Resume
+                {t("hero.resume")}
                 <Download className="h-4 w-4 transition-transform group-hover:translate-y-1" />
               </a>
             </div>

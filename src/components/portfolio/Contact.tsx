@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { Check, Github, Linkedin, Mail, MessageSquareText, Copy, RefreshCcw, Facebook, Phone } from "lucide-react";
 import { toast } from "sonner";
 import { DiscordIcon } from "./icons";
+import { useTranslation } from "react-i18next";
 import {
   Dialog,
   DialogContent,
@@ -17,6 +18,7 @@ const PHONE = "+358403286143";
 import { submitContactFormAction } from "@/server/contact";
 
 export function Contact() {
+  const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
   const [open, setOpen] = useState(false);
   const [sending, setSending] = useState(false);
@@ -58,7 +60,7 @@ export function Contact() {
       await submitContactFormAction({
         data: { name, email, subject, message },
       });
-      toast.success("Message sent successfully! I will get back to you soon.");
+      toast.success(t("contact.successMessage"));
       setOpen(false);
       resetForm();
     } catch (error) {
@@ -74,16 +76,13 @@ export function Contact() {
       <div className="mx-auto grid max-w-350 grid-cols-12 gap-6 px-6 py-24 md:px-10 md:py-32">
         <div className="col-span-12 md:col-span-7">
           <p className="font-mono-tech text-[11px] uppercase tracking-[0.28em] text-accent">
-            008 — Contact
+            {t("contact.eyebrow")}
           </p>
           <h2 className="mt-4 max-w-3xl font-display text-6xl font-bold leading-[0.9] md:text-7xl">
-            Looking for
-            <br />
-            <span className="italic opacity-70">a developer?</span>
+            {t("contact.title")}
           </h2>
           <p className="mt-8 max-w-lg text-base text-foreground/70">
-            Open to full-stack roles, engineering collaborations, projects and internships. Use the
-            button below to open a quick message form.
+            {t("contact.availability")}
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-3">
@@ -103,15 +102,15 @@ export function Contact() {
               <DialogContent className="border-foreground/20 bg-background text-foreground sm:max-w-2xl">
                 <DialogHeader className="text-left sm:text-left">
                   <DialogTitle className="font-display text-3xl md:text-4xl">
-                    Send a message
+                    {t("contact.send")}
                   </DialogTitle>
                 </DialogHeader>
 
                 <form onSubmit={submitContactForm} className="mt-2 space-y-4">
                   <div className="grid gap-4 md:grid-cols-2">
-                    <Field label="Your name" name="name" placeholder="Arpan" />
+                    <Field label={t("contact.nameLabel")} name="name" placeholder="Arpan" />
                     <Field
-                      label="Email address"
+                      label={t("contact.emailLabel")}
                       name="email"
                       type="email"
                       placeholder="name@company.com"
@@ -124,7 +123,7 @@ export function Contact() {
                   />
                   <div>
                     <label className="mb-2 block font-mono-tech text-[10px] uppercase tracking-widest text-foreground/60">
-                      Message
+                      {t("contact.messageLabel")}
                     </label>
                     <textarea
                       name="message"
@@ -141,7 +140,7 @@ export function Contact() {
                       className="inline-flex items-center gap-3 border border-foreground bg-foreground px-5 py-3.5 font-mono-tech text-xs uppercase tracking-widest text-background transition hover:bg-accent hover:border-accent hover:text-accent-foreground disabled:cursor-wait disabled:opacity-70"
                     >
                       <Mail className="h-4 w-4" />
-                      {sending ? "Opening mail client" : "Send message"}
+                      {sending ? t("contact.sending") : t("contact.send")}
                     </button>
                   </div>
                 </form>
@@ -184,7 +183,7 @@ export function Contact() {
             <p className="font-mono-tech text-[10px] uppercase tracking-widest text-foreground/60">
               / Location
             </p>
-            <p className="mt-3 font-display text-xl">Helsinki, Finland — UTC +3:00</p>
+            <p className="mt-3 font-display text-xl">{t("contact.location")}</p>
           </div>
         </div>
       </div>

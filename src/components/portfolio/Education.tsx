@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SectionHeader } from "./Projects";
 import { ChevronDown } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 type Edu = {
   id: string;
@@ -57,14 +58,15 @@ const EDU: Edu[] = [
 ];
 
 export function Education() {
+  const { t } = useTranslation();
   const [open, setOpen] = useState<string | null>(null);
 
   return (
     <section id="education" className="border-b border-hairline bg-stone">
       <SectionHeader
-        eyebrow="005 — Education"
-        title="My background"
-        note="ACADEMIC TIMELINE · FINLAND"
+        eyebrow={t("education.eyebrow")}
+        title={t("education.title")}
+        note={t("education.note")}
       />
       <div className="mx-auto max-w-350 px-6 pb-24 md:px-10">
         <div className="relative grid grid-cols-12 gap-8">
@@ -72,7 +74,7 @@ export function Education() {
           <div className="col-span-12 md:col-span-1">
             <div className="sticky top-24 hidden md:block">
               <div className="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground">
-                / Timeline
+                {t("education.timeline")}
               </div>
               <div className="mt-3 h-40 w-px bg-foreground/40" />
             </div>
@@ -106,7 +108,7 @@ export function Education() {
                           </span>
                           {e.status === "current" && (
                             <span className="border border-accent px-2 py-0.5 font-mono-tech text-[9px] uppercase tracking-widest text-accent">
-                              Ongoing
+                              {t("education.ongoing")}
                             </span>
                           )}
                         </div>
@@ -119,7 +121,7 @@ export function Education() {
                         {e.grade && (
                           <div className="mt-3 flex flex-wrap items-center gap-5">
                             <p className="font-mono-tech text-[11px] uppercase tracking-widest text-foreground">
-                              Grade · <span className="text-accent">{e.grade}</span>
+                              {t("education.grade")} · <span className="text-accent">{e.grade}</span>
                             </p>
                             {e.certificateUrl && (
                               <button
@@ -130,7 +132,7 @@ export function Education() {
                                 }}
                                 className="inline-flex items-center gap-2 border border-foreground px-2.5 py-1 font-mono-tech text-[9px] uppercase tracking-widest text-foreground transition hover:border-accent hover:text-accent"
                               >
-                                certificate →
+                                {t("education.certificate")}
                               </button>
                             )}
                           </div>
@@ -149,7 +151,7 @@ export function Education() {
                       {e.focus && (
                         <div className="col-span-12">
                           <p className="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground">
-                            / Academic focus
+                            {t("education.academicFocus")}
                           </p>
                           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-foreground">
                             {e.focus}
@@ -159,7 +161,7 @@ export function Education() {
                       {e.activities && (
                         <div className="col-span-12 md:col-span-4">
                           <p className="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground">
-                            / Activities
+                            {t("education.activities")}
                           </p>
                           <ul className="mt-3 space-y-1.5">
                             {e.activities.map((a) => (
@@ -173,7 +175,7 @@ export function Education() {
                       {e.coursework && (
                         <div className="col-span-12 md:col-span-8">
                           <p className="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground">
-                            / Relevant coursework ({e.coursework.length})
+                            {t("education.coursework")} ({e.coursework.length})
                           </p>
                           <div className="mt-3 flex flex-wrap gap-1.5">
                             {e.coursework.map((c) => (

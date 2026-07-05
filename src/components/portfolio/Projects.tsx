@@ -2,14 +2,16 @@ import { useState } from "react";
 import { ArrowUpRight, ChevronDown, Github } from "lucide-react";
 import { projectsData, Project } from "@/lib/projects";
 import { Reveal } from "@/components/ui/Reveal";
+import { useTranslation } from "react-i18next";
 
 export function Projects() {
+  const { t } = useTranslation();
   return (
     <section id="work" className="border-b border-hairline">
       <SectionHeader
-        eyebrow="003 — Selected projects"
-        title="Systems, shipped"
-        note="A WORKING ARCHIVE OF FULL-STACK SYSTEMS"
+        eyebrow={t("projects.eyebrow")}
+        title={t("projects.title")}
+        note={t("projects.note")}
       />
       <div className="mx-auto max-w-350 px-6 pb-16 md:px-10">
         <Reveal delay={0.1}>
@@ -23,7 +25,7 @@ export function Projects() {
         {/* Archive CTA */}
         <div className="mt-12 flex flex-col items-center gap-4 border-t border-hairline pt-12">
           <p className="font-mono-tech text-[11px] uppercase tracking-[0.28em] text-muted-foreground">
-            / Beyond the featured three
+            {t("projects.beyondThree")}
           </p>
           <a
             href="https://github.com/arpansarkar112?tab=repositories"
@@ -32,7 +34,7 @@ export function Projects() {
             className="group inline-flex items-center gap-4 border-2 border-foreground bg-background px-8 py-5 font-mono-tech text-xs uppercase tracking-widest text-foreground transition hover:bg-foreground hover:text-background"
           >
             <Github className="h-5 w-5" />
-            View Full Project Archives
+            {t("projects.viewArchives")}
             <ArrowUpRight className="h-5 w-5 transition group-hover:rotate-45" />
           </a>
         </div>
@@ -42,6 +44,7 @@ export function Projects() {
 }
 
 function ProjectCard({ project: p }: { project: Project }) {
+  const { t } = useTranslation();
   const tone =
     p.tone === "ink"
       ? "bg-foreground text-background"
@@ -73,7 +76,7 @@ function ProjectCard({ project: p }: { project: Project }) {
             />
             <div className="absolute inset-0 bg-linear-to-t from-black/35 via-transparent to-transparent transition group-hover/preview:from-black/20" />
             <div className="absolute left-4 top-4 inline-flex items-center gap-2 border border-background/70 bg-background/90 px-3 py-1 font-mono-tech text-[10px] uppercase tracking-widest text-foreground shadow-sm">
-              Live preview
+              {t("projects.livePreview")}
               <ArrowUpRight className="h-3.5 w-3.5" />
             </div>
           </div>
@@ -100,7 +103,7 @@ function ProjectCard({ project: p }: { project: Project }) {
             href={`/project/${p.id}`}
             className="group/btn inline-flex items-center gap-2 border border-current px-5 py-2.5 font-mono-tech text-xs uppercase tracking-widest transition hover:bg-current/10"
           >
-            View More / Details
+            {t("projects.viewMore")}
             <ArrowUpRight className="h-4 w-4 transition group-hover/btn:rotate-45" />
           </a>
         </div>

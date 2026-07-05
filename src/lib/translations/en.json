@@ -1,0 +1,94 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Me",
+    "projects": "Projects",
+    "skills": "Skills",
+    "education": "Education",
+    "papers": "Papers",
+    "talk": "Talk",
+    "contact": "Contact",
+    "talkToArpan": "TALK TO ARPAN"
+  },
+  "hero": {
+    "systemStatus": "System status",
+    "availableRole": "/ Available for full-stack roles",
+    "portfolioV": "001 — Portfolio / v.2026",
+    "roleLabel": "/ Role",
+    "role": "Full-Stack Developer",
+    "stackLabel": "/ Stack",
+    "tagline1": "Bridging ",
+    "taglineHighlight": "precision engineering",
+    "tagline2": " with modern web architecture to deliver reliable and intelligent full-stack systems.",
+    "resume": "Resume"
+  },
+  "about": {
+    "eyebrow": "002 — Background",
+    "title": "About Me",
+    "note": "JOURNEY & BEYOND",
+    "journeyTitle": "/ My Journey",
+    "journeyText": "Hello, I am Arpan. My path into software development began right at the intersection of automation engineering and modern web architecture. I have always been fascinated by how different systems communicate and operate behind the scenes. As my skills evolved, I dove headfirst into full-stack development. I spent countless late nights mastering the MERN stack, TypeScript, and C++, focusing my energy on building everything from AI-driven task agents to highly responsive web interfaces.",
+    "whatIDoTitle": "/ What I Do",
+    "whatIDoText": "When it comes to the work I enjoy most, I thrive where precision meets creativity. I love architecting reliable systems and tackling complex design challenges. Whether I am building out an automation workflow or scaling a web application, I get a real thrill out of creating digital products that are just as smart under the hood as they are beautiful on the screen.",
+    "offTheGridTitle": "/ Off the Grid",
+    "offTheGridText": "Of course, there is more to life than writing code. When I step away from the keyboard, you will usually find me watching a football match. I am a huge Manchester City supporter, and I never miss the excitement of international tournaments like the World Cup. I am also deeply passionate about traveling. I am constantly on the hunt for the perfect place to travel around the world. Balancing the strict logic of programming with the unpredictable nature of travel and sports keeps me grounded and always ready to learn something new."
+  },
+  "projects": {
+    "eyebrow": "003 — Selected projects",
+    "title": "Systems, shipped",
+    "note": "A WORKING ARCHIVE OF FULL-STACK SYSTEMS",
+    "beyondThree": "/ Beyond the featured three",
+    "viewArchives": "View Full Project Archives",
+    "livePreview": "Live preview",
+    "viewMore": "View More / Details"
+  },
+  "skills": {
+    "eyebrow": "004 — Skills & tech stack",
+    "title": "Development Stack",
+    "note": "HOVER A NODE — INSPECT THE STACK",
+    "allNodes": "All Nodes",
+    "nodes": "nodes",
+    "inspector": "› Inspector",
+    "hoverToInspect": "Hover a node to inspect.",
+    "hoverText": "Each hexagon is a live capability of frontend, backend, language, or architectural pattern. The stack is composed.",
+    "fluency": "Fluency",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "languages": "Languages",
+      "architecture": "Architecture"
+    }
+  },
+  "education": {
+    "eyebrow": "005 — Education",
+    "title": "My background",
+    "note": "ACADEMIC TIMELINE · FINLAND",
+    "timeline": "/ Timeline",
+    "ongoing": "Ongoing",
+    "grade": "Grade",
+    "certificate": "certificate →",
+    "academicFocus": "/ Academic focus",
+    "activities": "/ Activities",
+    "coursework": "/ Relevant coursework"
+  },
+  "publications": {
+    "eyebrow": "006 — Research & Papers",
+    "title": "Publications",
+    "note": "ACADEMIC PAPERS & ARTICLES",
+    "viewPaper": "View Paper",
+    "downloadPdf": "Download PDF"
+  },
+  "contact": {
+    "eyebrow": "007 — Connect",
+    "title": "Get in touch",
+    "note": "AVAILABLE FOR NEW OPPORTUNITIES",
+    "availability": "Available for full-time roles starting June 2026",
+    "location": "Helsinki, Finland",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "successMessage": "Message sent successfully!"
+  }
+}

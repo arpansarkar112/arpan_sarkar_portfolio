@@ -14,6 +14,7 @@ import {
   SiCplusplus,
 } from "react-icons/si";
 import { Bot, Code2, Database, Layers3, ShieldCheck, Workflow } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 type Skill = {
   name: string;
@@ -73,25 +74,26 @@ const skills: Skill[] = [
   { name: "AI Integration", cat: "concept", level: 4, note: "LLM APIs, RPA agent orchestration." },
 ];
 
-const CAT_META: Record<Skill["cat"], { label: string; code: string; color: string }> = {
-  frontend: { label: "Frontend", code: "FE", color: "bg-accent text-accent-foreground" },
-  backend: { label: "Backend", code: "BE", color: "bg-foreground text-background" },
-  language: { label: "Languages", code: "LN", color: "bg-emerald-500 text-black" },
-  concept: { label: "Architecture", code: "AR", color: "bg-background text-foreground border border-foreground" },
-};
-
 export function Skills() {
+  const { t } = useTranslation();
   const [active, setActive] = useState<Skill | null>(null);
   const [filter, setFilter] = useState<Skill["cat"] | "all">("all");
+
+  const CAT_META: Record<Skill["cat"], { label: string; code: string; color: string }> = {
+    frontend: { label: t("skills.categories.frontend"), code: "FE", color: "bg-accent text-accent-foreground" },
+    backend: { label: t("skills.categories.backend"), code: "BE", color: "bg-foreground text-background" },
+    language: { label: t("skills.categories.languages"), code: "LN", color: "bg-emerald-500 text-black" },
+    concept: { label: t("skills.categories.architecture"), code: "AR", color: "bg-background text-foreground border border-foreground" },
+  };
 
   const filtered = filter === "all" ? skills : skills.filter((s) => s.cat === filter);
 
   return (
     <section id="skills" className="border-b border-hairline">
       <SectionHeader
-        eyebrow="004 — Skills & tech stack"
-        title="Development Stack"
-        note="HOVER A NODE — INSPECT THE STACK"
+        eyebrow={t("skills.eyebrow")}
+        title={t("skills.title")}
+        note={t("skills.note")}
       />
       <div className="mx-auto max-w-350 px-6 pb-24 md:px-10">
         {/* Filter rail */}
@@ -107,12 +109,12 @@ export function Skills() {
                     : "border-border text-muted-foreground hover:border-accent hover:text-accent"
                 }`}
               >
-                {c === "all" ? "All Nodes" : CAT_META[c].label}
+                {c === "all" ? t("skills.allNodes") : CAT_META[c].label}
               </button>
             ))}
           </div>
           <span className="font-mono-tech text-[11px] uppercase tracking-widest text-muted-foreground">
-            {filtered.length.toString().padStart(2, "0")} / {skills.length} nodes
+            {filtered.length.toString().padStart(2, "0")} / {skills.length} {t("skills.nodes")}
           </span>
         </div>
 
@@ -125,6 +127,7 @@ export function Skills() {
                 <HexNode
                   key={s.name}
                   skill={s}
+                  meta={CAT_META[s.cat]}
                   onEnter={() => setActive(s)}
                   onLeave={() => setActive((cur) => (cur?.name === s.name ? null : cur))}
                 />
@@ -137,7 +140,7 @@ export function Skills() {
             <div className="sticky top-24 border border-foreground bg-background p-6 shadow-[8px_8px_0_0_var(--color-hairline)]">
               <div className="flex items-center justify-between border-b border-hairline pb-3">
                 <span className="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground">
-                  › Inspector
+                  {t("skills.inspector")}
                 </span>
                 <span className="h-2 w-2 animate-pulse-dot bg-accent" />
               </div>
@@ -155,7 +158,7 @@ export function Skills() {
                   <p className="mt-2 text-sm text-muted-foreground">{active.note}</p>
                   <div className="mt-6">
                     <div className="flex items-center justify-between font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground">
-                      <span>Fluency</span>
+                      <span>{t("skills.fluency")}</span>
                       <span>{active.level}/5</span>
                     </div>
                     <div className="mt-2 flex gap-1">
@@ -173,11 +176,10 @@ export function Skills() {
               ) : (
                 <div className="mt-5">
                   <p className="font-display text-xl leading-snug text-foreground">
-                    Hover a node to inspect.
+                    {t("skills.hoverToInspect")}
                   </p>
                   <p className="mt-3 text-sm text-muted-foreground">
-                    Each hexagon is a live capability of frontend, backend, language, or
-                    architectural pattern. The stack is composed.
+                    {t("skills.hoverText")}
                   </p>
                   <div className="mt-6 space-y-2">
                     {(Object.keys(CAT_META) as Skill["cat"][]).map((c) => (
@@ -207,14 +209,15 @@ export function Skills() {
 
 function HexNode({
   skill,
+  meta,
   onEnter,
   onLeave,
 }: {
   skill: Skill;
+  meta: { label: string; code: string; color: string };
   onEnter: () => void;
   onLeave: () => void;
 }) {
-  const meta = CAT_META[skill.cat];
   const iconMeta = skillIcons[skill.name];
   return (
     <button

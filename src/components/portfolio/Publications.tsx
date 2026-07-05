@@ -1,13 +1,15 @@
 import { SectionHeader } from "./Projects";
 import { BookOpen, Award } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export function Publications() {
+  const { t } = useTranslation();
   return (
     <section id="publications" className="border-b border-hairline">
       <SectionHeader
-        eyebrow="006 — Publications"
-        title="Academic spotlight"
-        note="PEER-REVIEWED THESIS"
+        eyebrow={t("publications.eyebrow")}
+        title={t("publications.title")}
+        note={t("publications.note")}
       />
       <div className="mx-auto max-w-350 px-6 pb-24 md:px-10">
         <article className="relative overflow-hidden border border-foreground bg-background text-foreground shadow-[10px_10px_0_0_var(--color-accent)]">
@@ -46,7 +48,7 @@ export function Publications() {
                 rel="noreferrer"
                 className="mt-6 inline-flex items-center gap-2 border border-foreground/30 px-4 py-2 font-mono-tech text-[10px] uppercase tracking-widest text-foreground transition hover:border-accent hover:text-accent"
               >
-                Read thesis →
+                {t("publications.viewPaper")} →
               </a>
             </div>
 

@@ -1,0 +1,94 @@
+{
+  "nav": {
+    "home": "Koti",
+    "about": "Tietoja minusta",
+    "projects": "Projektit",
+    "skills": "Taidot",
+    "education": "Koulutus",
+    "papers": "Julkaisut",
+    "talk": "Keskustele",
+    "contact": "Yhteystiedot",
+    "talkToArpan": "KESKUSTELE ARPANIN KANSSA"
+  },
+  "hero": {
+    "systemStatus": "Järjestelmän tila",
+    "availableRole": "/ Käytettävissä full-stack rooleihin",
+    "portfolioV": "001 — Portfolio / v.2026",
+    "roleLabel": "/ Rooli",
+    "role": "Full-Stack Kehittäjä",
+    "stackLabel": "/ Pino",
+    "tagline1": "Yhdistän ",
+    "taglineHighlight": "tarkkuussuunnittelun",
+    "tagline2": " ja modernin verkkoarkkitehtuurin tuottaakseni luotettavia ja älykkäitä full-stack-järjestelmiä.",
+    "resume": "Ansioluettelo"
+  },
+  "about": {
+    "eyebrow": "002 — Tausta",
+    "title": "Tietoja minusta",
+    "note": "MATKA JA SEN YLI",
+    "journeyTitle": "/ Minun Matkani",
+    "journeyText": "Hei, olen Arpan. Poluni ohjelmistokehitykseen alkoi automaatiotekniikan ja modernin verkkoarkkitehtuurin risteyksestä. Olen aina ollut kiinnostunut siitä, kuinka eri järjestelmät kommunikoivat ja toimivat kulissien takana. Taitojeni kehittyessä sukelsin suoraan full-stack-kehitykseen. Vietin lukemattomia myöhäisillan tunteja hallitsemalla MERN-pinoa, TypeScriptiä ja C++:aa, keskittyen rakentamaan kaikkea tekoälyohjatuista tehtäväagenteista erittäin responsiivisiin verkkokäyttöliittymiin.",
+    "whatIDoTitle": "/ Mitä Teen",
+    "whatIDoText": "Mitä tulee työhön, josta nautin eniten, kukoistan siellä, missä tarkkuus kohtaa luovuuden. Rakastan luotettavien järjestelmien arkkitehtuuria ja monimutkaisten suunnitteluhaasteiden ratkaisemista. Riippumatta siitä, rakennanko automaatiotyönkulkua vai skaalaanko verkkosovellusta, saan todellisen jännityksen digitaalisten tuotteiden luomisesta, jotka ovat yhtä älykkäitä konepellin alla kuin ne ovat kauniita näytöllä.",
+    "offTheGridTitle": "/ Vapaa-ajalla",
+    "offTheGridText": "Elämässä on tietysti muutakin kuin koodin kirjoittamista. Kun astun pois näppäimistöltä, löydät minut yleensä katsomasta jalkapallo-ottelua. Olen valtava Manchester Cityn kannattaja, enkä koskaan missaa kansainvälisten turnausten, kuten maailmanmestaruuskilpailujen, jännitystä. Olen myös syvästi intohimoinen matkustamiseen. Olen jatkuvasti etsimässä täydellistä paikkaa matkustaa ympäri maailmaa. Ohjelmoinnin tiukan logiikan tasapainottaminen matkustamisen ja urheilun arvaamattoman luonteen kanssa pitää minut maadoitettuna ja aina valmiina oppimaan uutta."
+  },
+  "projects": {
+    "eyebrow": "003 — Valitut projektit",
+    "title": "Toimitetut järjestelmät",
+    "note": "TOIMIVA ARKISTO FULL-STACK JÄRJESTELMISTÄ",
+    "beyondThree": "/ Kolmen esitellyn lisäksi",
+    "viewArchives": "Tarkastele koko projektiarkistoa",
+    "livePreview": "Esikatselu",
+    "viewMore": "Katso lisää / Yksityiskohdat"
+  },
+  "skills": {
+    "eyebrow": "004 — Taidot & teknologiapino",
+    "title": "Kehityspino",
+    "note": "VIE HIIREN OSOITIN SOLMUN PÄÄLLE — TARKASTELE PINOA",
+    "allNodes": "Kaikki solmut",
+    "nodes": "solmut",
+    "inspector": "› Tarkastaja",
+    "hoverToInspect": "Vie hiiren osoitin solmun päälle tarkastellaksesi.",
+    "hoverText": "Jokainen kuusikulmio edustaa käyttöliittymä-, taustajärjestelmä-, kieli- tai arkkitehtuurikapasiteettia. Pino on yhdistetty.",
+    "fluency": "Sujuvuus",
+    "categories": {
+      "frontend": "Käyttöliittymä",
+      "backend": "Taustajärjestelmä",
+      "languages": "Kielet",
+      "architecture": "Arkkitehtuuri"
+    }
+  },
+  "education": {
+    "eyebrow": "005 — Koulutus",
+    "title": "Taustani",
+    "note": "AKATEEMINEN AIKAJANA · SUOMI",
+    "timeline": "/ Aikajana",
+    "ongoing": "Meneillään",
+    "grade": "Arvosana",
+    "certificate": "todistus →",
+    "academicFocus": "/ Akateeminen painopiste",
+    "activities": "/ Toiminta",
+    "coursework": "/ Asiaankuuluvat kurssit"
+  },
+  "publications": {
+    "eyebrow": "006 — Tutkimus & Julkaisut",
+    "title": "Julkaisut",
+    "note": "AKATEEMISET PAPERIT & ARTIKKELIT",
+    "viewPaper": "Näytä julkaisu",
+    "downloadPdf": "Lataa PDF"
+  },
+  "contact": {
+    "eyebrow": "007 — Yhteys",
+    "title": "Ota yhteyttä",
+    "note": "AVOINNA UUSILLE MAHDOLLISUUKSILLE",
+    "availability": "Käytettävissä kokopäiväisiin rooleihin alkaen kesäkuusta 2026",
+    "location": "Helsinki, Suomi",
+    "nameLabel": "Nimi",
+    "emailLabel": "Sähköposti",
+    "messageLabel": "Viesti",
+    "send": "Lähetä viesti",
+    "sending": "Lähetetään...",
+    "successMessage": "Viesti lähetetty onnistuneesti!"
+  }
+}

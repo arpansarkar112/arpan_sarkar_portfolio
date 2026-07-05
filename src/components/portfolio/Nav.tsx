@@ -1,15 +1,18 @@
 import { ThemeToggle } from "./ThemeToggle";
+import { LanguageToggle } from "./LanguageToggle";
+import { useTranslation } from "react-i18next";
 
 export function Nav() {
+  const { t } = useTranslation();
+  
   const links = [
-    { href: "#top", label: "Home" },
-    { href: "#about", label: "About Me" },
-    { href: "#work", label: "Projects" },
-    { href: "#skills", label: "Skills" },
-    { href: "#education", label: "Education" },
-    { href: "#publications", label: "Papers" },
-    { href: "#ask", label: "Talk" },
-    { href: "#contact", label: "Contact" },
+    { href: "#top", label: t("nav.home") },
+    { href: "#about", label: t("nav.about") },
+    { href: "#work", label: t("nav.projects") },
+    { href: "#skills", label: t("nav.skills") },
+    { href: "#education", label: t("nav.education") },
+    { href: "#publications", label: t("nav.papers") },
+    { href: "#contact", label: t("nav.contact") },
   ];
   return (
     <header className="sticky top-0 z-40 border-b border-hairline bg-background/80 backdrop-blur-md">
@@ -35,6 +38,7 @@ export function Nav() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
+          <LanguageToggle />
           <ThemeToggle />
           <a
             href="#ask"
