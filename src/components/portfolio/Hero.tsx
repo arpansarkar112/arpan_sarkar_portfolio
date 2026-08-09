@@ -77,7 +77,7 @@ export function Hero() {
           <div className="col-span-12 flex flex-col justify-end gap-4 md:col-span-5 md:items-end">
             <div className="flex flex-wrap items-center gap-4">
               <a
-                href="https://docs.google.com/document/d/10bHQFbyfiHPb7sKEhcorryNI7zMFS_cpfXbYal41TZ8/export?format=pdf"
+                href="https://drive.google.com/file/d/1B30zFPCGv2Os_SqoyYwc3z8YTDHgfEER/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 border border-foreground bg-transparent px-5 py-3 font-mono-tech text-xs uppercase tracking-widest text-foreground transition hover:bg-foreground hover:text-background"
