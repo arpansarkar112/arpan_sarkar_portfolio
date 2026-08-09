@@ -45,7 +45,7 @@ export const projectsData: Project[] = [
   {
     id: "gear-up",
     index: "P02",
-    title: "GearUp — E-Commerce Platform",
+    title: "GearUp — E-rental Platform",
     summary:
       "A complete full-stack e-commerce solution for sports and outdoor gear, featuring separate frontend and backend architectures.",
     description:
