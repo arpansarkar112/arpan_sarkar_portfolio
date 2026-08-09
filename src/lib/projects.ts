@@ -43,25 +43,25 @@ export const projectsData: Project[] = [
       "In the future, I plan to expand file support beyond CSV to include PDFs and Excel spreadsheets. Additionally, implementing real-time websocket connections instead of standard polling could provide a more fluid chat-like experience.",
   },
   {
-    id: "saas-landing",
+    id: "gear-up",
     index: "P02",
-    title: "SaaS Landing Page",
+    title: "GearUp — E-Commerce Platform",
     summary:
-      "Highly responsive frontend application — a marketing surface built as a component system rather than a page.",
+      "A complete full-stack e-commerce solution for sports and outdoor gear, featuring separate frontend and backend architectures.",
     description:
-      "This project focuses heavily on frontend aesthetics and fluid design. It serves as a modern SaaS marketing template with a composable section-based architecture, making it easy to swap out features, testimonials, and pricing tables.",
-    highlights: ["Fluid type & spacing scale", "Composable section primitives"],
-    stack: ["React", "TypeScript", "Tailwind"],
-    demo: "https://bucolic-lily-8ee23b.netlify.app/",
-    repo: "https://github.com/arpansarkar112/frontend_coursework.git",
+      "GearUp is a robust e-commerce platform I built to handle full retail workflows. It includes product browsing, shopping cart management, user authentication, and secure data handling, bridging a dynamic React frontend with a scalable backend.",
+    highlights: ["Full-stack architecture", "Complete e-commerce workflow", "RESTful API integration"],
+    stack: ["React", "Node.js", "Express", "MongoDB"],
+    demo: "https://gear-up-frontend-liart.vercel.app/",
+    repo: "https://github.com/arpansarkar112/GearUp_Frontend.git",
     span: "lg:col-span-4 md:col-span-12 col-span-12",
     tone: "stone",
     year: "'26",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&q=80&w=800",
     challenges:
-      "Creating a unified design system that scales seamlessly from small mobile screens to ultra-wide desktop monitors. Managing Tailwind config for consistent spacing without overusing media queries was a complex but rewarding task.",
+      "Managing global state for the shopping cart across different components and securely handling user authentication between the separated frontend and backend repositories were the primary hurdles. Ensuring seamless cross-origin resource sharing (CORS) also took precise configuration.",
     improvements:
-      "Adding full accessibility (a11y) support for screen readers and keyboard navigation. I also aim to implement robust A/B testing components so marketers can easily experiment with different layouts.",
+      "In the future, I plan to integrate a fully-featured admin dashboard for inventory management and implement Stripe API for real-time payment processing. I'd also like to add a backend link directly into the UI for easier codebase navigation.",
   },
   {
     id: "mancity-dashboard",
