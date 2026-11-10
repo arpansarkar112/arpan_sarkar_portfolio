@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SectionHeader } from "./Projects";
-import { ChevronDown } from "lucide-react";
+import { Reveal } from "@/components/ui/Reveal";
+import { PiArrowUpRight } from "react-icons/pi";
 import { useTranslation } from "react-i18next";
 
 type Edu = {
@@ -19,22 +20,25 @@ type Edu = {
 const EDU: Edu[] = [
   {
     id: "E01",
-    institution: "SEAMK — Seinäjoki University of Applied Sciences",
-    degree: "Bachelor of Engineering (BE), Automation Engineering",
-    dates: "Sep 2022 — May 2026",
+    institution: "SEAMK · Seinäjoki University of Applied Sciences",
+    degree: "Bachelor of Engineering (B.Eng.), Automation Engineering",
+    dates: "Sep 2022 · May 2026",
     status: "completed",
-    grade: "3.49",
+    grade: "3.49 / 5.0",
     certificateUrl:
       "https://drive.google.com/file/d/1dNsektq5zK0bS_FKyDHCEb_ID4PVg8p8/view?usp=sharing",
     focus:
-      "Focused on the integration of software development and industrial automation technologies. Developed strong engineering and problem-solving skills through hands-on laboratory work, programming projects, and automation system design.",
-    activities: ["Samo (Student Union)", "Insinööriliitto (The Union of Professional Engineers in Finland)"],
+      "Focused on the integration of software development and industrial automation technologies. Built engineering and problem solving foundations through hands on laboratory work, software engineering projects, and control system design.",
+    activities: [
+      "SAMO (Student Union of Seinäjoki University of Applied Sciences)",
+      "Insinööriliitto (Union of Professional Engineers in Finland)",
+    ],
     coursework: [
       "Software Engineering",
       "Data Structures & Algorithms",
-      "Object-Oriented Programming",
-      "Client-side Programming",
-      "Server-side Programming",
+      "Object Oriented Programming",
+      "Client Side Programming",
+      "Server Side Programming",
       "User Interface Design",
       "Network Programming",
       "Cloud Computing",
@@ -53,13 +57,13 @@ const EDU: Edu[] = [
       "Virtual Environments",
       "Design of Electrical & Automation Systems",
       "Production Automation",
-    ]
+    ],
   },
 ];
 
 export function Education() {
   const { t } = useTranslation();
-  const [open, setOpen] = useState<string | null>(null);
+  const [showAllCourses, setShowAllCourses] = useState(false);
 
   return (
     <section id="education" className="border-b border-hairline bg-stone">
@@ -68,120 +72,117 @@ export function Education() {
         title={t("education.title")}
         note={t("education.note")}
       />
-      <div className="mx-auto max-w-350 px-6 pb-24 md:px-10">
-        <div className="relative grid grid-cols-12 gap-8">
-          {/* Timeline rail */}
-          <div className="col-span-12 md:col-span-1">
-            <div className="sticky top-24 hidden md:block">
-              <div className="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground">
-                {t("education.timeline")}
-              </div>
-              <div className="mt-3 h-40 w-px bg-foreground/40" />
-            </div>
-          </div>
-
-          <div className="col-span-12 space-y-4 md:col-span-11">
+      <div className="mx-auto max-w-[1400px] px-6 pb-20 md:px-10 md:pb-24">
+        <Reveal delay={0.08}>
+          <div className="space-y-6">
             {EDU.map((e) => {
-              const isOpen = open === e.id;
+              const allCourses = e.coursework ?? [];
+              const visibleCourses = showAllCourses
+                ? allCourses
+                : allCourses.slice(0, 10);
+
               return (
                 <article
                   key={e.id}
-                  className="border border-foreground bg-background shadow-[6px_6px_0_0_var(--color-hairline)]"
+                  className="rounded-2xl border border-border bg-card p-6 md:p-10"
                 >
-                  <button
-                    onClick={() => setOpen(isOpen ? null : e.id)}
-                    className="flex w-full items-start justify-between gap-6 p-6 text-left md:p-8"
-                  >
-                    <div className="flex items-start gap-6">
-                      <div className="hidden flex-col items-center pt-1 md:flex">
-                        <span
-                          className={`h-3 w-3 ${
-                            e.status === "current" ? "animate-pulse-dot bg-accent" : "bg-foreground"
-                          }`}
-                        />
-                        <span className="mt-1 h-16 w-px bg-hairline" />
-                      </div>
+                  <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+                    {/* Left column: Degree summary & credentials */}
+                    <div className="flex flex-col justify-between border-b border-hairline pb-8 lg:col-span-5 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-8">
                       <div>
-                        <div className="flex items-center gap-3">
-                          <span className="font-mono-tech text-[10px] uppercase tracking-widest text-accent">
+                        <div className="flex flex-wrap items-center gap-3">
+                          <span className="font-mono-tech text-xs font-medium text-accent tabular-nums">
                             {e.id} · {e.dates}
                           </span>
                           {e.status === "current" && (
-                            <span className="border border-accent px-2 py-0.5 font-mono-tech text-[9px] uppercase tracking-widest text-accent">
+                            <span className="rounded-sm border border-accent px-2 py-0.5 font-mono-tech text-xs font-medium text-accent">
                               {t("education.ongoing")}
                             </span>
                           )}
                         </div>
-                        <h3 className="mt-3 font-display text-2xl font-semibold leading-tight text-foreground md:text-3xl">
+
+                        <h3 className="mt-3 font-display text-2xl font-bold tracking-tight text-foreground text-balance md:text-3xl">
                           {e.institution}
                         </h3>
-                        <p className="mt-1 font-mono-tech text-xs uppercase tracking-widest text-muted-foreground">
+                        <p className="mt-2 font-display text-lg font-medium text-muted-foreground">
                           {e.degree}
                         </p>
-                        {e.grade && (
-                          <div className="mt-3 flex flex-wrap items-center gap-5">
-                            <p className="font-mono-tech text-[11px] uppercase tracking-widest text-foreground">
-                              {t("education.grade")} · <span className="text-accent">{e.grade}</span>
-                            </p>
-                            {e.certificateUrl && (
-                              <button
-                                type="button"
-                                onClick={(event) => {
-                                  event.stopPropagation();
-                                  window.open(e.certificateUrl, "_blank", "noopener,noreferrer");
-                                }}
-                                className="inline-flex items-center gap-2 border border-foreground px-2.5 py-1 font-mono-tech text-[9px] uppercase tracking-widest text-foreground transition hover:border-accent hover:text-accent"
-                              >
-                                {t("education.certificate")}
-                              </button>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    <ChevronDown
-                      className={`mt-2 h-5 w-5 shrink-0 text-muted-foreground transition ${
-                        isOpen ? "rotate-180 text-accent" : ""
-                      }`}
-                    />
-                  </button>
 
-                  {isOpen && (
-                    <div className="grid grid-cols-12 gap-6 border-t border-hairline p-6 md:p-8">
-                      {e.focus && (
-                        <div className="col-span-12">
-                          <p className="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground">
-                            {t("education.academicFocus")}
-                          </p>
-                          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-foreground">
+                        {e.focus && (
+                          <p className="mt-4 max-w-[65ch] text-base text-muted-foreground text-pretty">
                             {e.focus}
                           </p>
+                        )}
+                      </div>
+
+                      {e.grade && (
+                        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-hairline pt-6">
+                          <div>
+                            <p className="font-mono-tech text-xs text-muted-foreground">
+                              {t("education.grade")}
+                            </p>
+                            <p className="mt-1 font-display text-2xl font-bold text-foreground tabular-nums">
+                              {e.grade}
+                            </p>
+                          </div>
+                          {e.certificateUrl && (
+                            <a
+                              href={e.certificateUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="group inline-flex items-center gap-2 rounded-lg border border-foreground bg-foreground px-3 py-2 text-base font-semibold text-background transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-accent hover:bg-accent hover:text-accent-foreground active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                            >
+                              {t("education.certificate")}
+                              <PiArrowUpRight className="h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                            </a>
+                          )}
                         </div>
                       )}
+                    </div>
+
+                    {/* Right column: Activities & Progressive Coursework */}
+                    <div className="flex flex-col justify-between gap-8 lg:col-span-7">
                       {e.activities && (
-                        <div className="col-span-12 md:col-span-4">
-                          <p className="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground">
+                        <div>
+                          <p className="font-mono-tech text-xs font-medium text-accent">
                             {t("education.activities")}
                           </p>
-                          <ul className="mt-3 space-y-1.5">
+                          <ul className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
                             {e.activities.map((a) => (
-                              <li key={a} className="font-mono-tech text-[11px] uppercase tracking-widest text-foreground">
-                                › {a}
+                              <li
+                                key={a}
+                                className="rounded-xl border border-border bg-stone p-4 text-sm font-medium text-foreground"
+                              >
+                                {a}
                               </li>
                             ))}
                           </ul>
                         </div>
                       )}
-                      {e.coursework && (
-                        <div className="col-span-12 md:col-span-8">
-                          <p className="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground">
-                            {t("education.coursework")} ({e.coursework.length})
-                          </p>
-                          <div className="mt-3 flex flex-wrap gap-1.5">
-                            {e.coursework.map((c) => (
+
+                      {allCourses.length > 0 && (
+                        <div>
+                          <div className="flex items-center justify-between gap-4">
+                            <p className="font-mono-tech text-xs font-medium text-muted-foreground tabular-nums">
+                              {t("education.coursework")} ({allCourses.length})
+                            </p>
+                            {allCourses.length > 10 && (
+                              <button
+                                type="button"
+                                onClick={() => setShowAllCourses((prev) => !prev)}
+                                className="text-sm font-semibold text-accent underline-offset-4 transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:underline active:translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                              >
+                                {showAllCourses
+                                  ? "Show core selection"
+                                  : `Show all ${allCourses.length} courses`}
+                              </button>
+                            )}
+                          </div>
+                          <div className="mt-4 flex flex-wrap gap-2">
+                            {visibleCourses.map((c) => (
                               <span
                                 key={c}
-                                className="border border-border px-2 py-1 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground transition hover:border-accent hover:text-accent"
+                                className="rounded-md border border-border bg-background px-3 py-1 font-mono-tech text-xs text-foreground transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-accent"
                               >
                                 {c}
                               </span>
@@ -190,12 +191,12 @@ export function Education() {
                         </div>
                       )}
                     </div>
-                  )}
+                  </div>
                 </article>
               );
             })}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

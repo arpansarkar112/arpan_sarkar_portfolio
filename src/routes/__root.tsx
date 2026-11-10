@@ -16,23 +16,23 @@ import i18n from "@/lib/i18n";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-dvh items-center justify-center bg-background px-6">
       <div className="max-w-md text-center">
-        <p className="font-mono-tech text-xs uppercase tracking-widest text-muted-foreground">
+        <p className="font-mono-tech text-xs tracking-wider text-muted-foreground tabular-nums">
           Error / 404
         </p>
-        <h1 className="mt-4 font-display text-6xl font-bold text-foreground">
-          Not found.
+        <h1 className="mt-4 font-display text-5xl font-bold tracking-tight text-foreground text-balance">
+          Page not found.
         </h1>
-        <p className="mt-3 text-sm text-muted-foreground">
-          This route was never wired into the system.
+        <p className="mt-4 text-base text-muted-foreground text-pretty">
+          The page you requested does not exist or has moved to another address.
         </p>
         <div className="mt-8">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 border border-foreground bg-foreground px-5 py-2.5 font-mono-tech text-xs uppercase tracking-widest text-background transition hover:bg-accent hover:border-accent hover:text-accent-foreground"
+            className="inline-flex items-center gap-2 rounded-md border border-foreground bg-foreground px-3 py-2 text-base font-semibold text-background transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-accent hover:bg-accent hover:text-accent-foreground active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
-            ← Return home
+            Return to portfolio
           </Link>
         </div>
       </div>
@@ -45,26 +45,32 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-dvh items-center justify-center bg-background px-6">
       <div className="max-w-md text-center">
-        <p className="font-mono-tech text-xs uppercase tracking-widest text-muted-foreground">
+        <p className="font-mono-tech text-xs tracking-wider text-muted-foreground">
           System exception
         </p>
-        <h1 className="mt-4 font-display text-3xl font-bold text-foreground">
-          Something failed to render.
+        <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-foreground text-balance">
+          We could not render this view.
         </h1>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
+        <p className="mt-3 text-sm text-muted-foreground text-pretty">
+          Refresh the view or return to the main portfolio page.
+        </p>
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
           <button
-            onClick={() => { router.invalidate(); reset(); }}
-            className="border border-foreground bg-foreground px-5 py-2.5 font-mono-tech text-xs uppercase tracking-widest text-background transition hover:bg-accent hover:border-accent hover:text-accent-foreground"
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
+            className="rounded-md border border-foreground bg-foreground px-3 py-2 text-base font-semibold text-background transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-accent hover:bg-accent hover:text-accent-foreground active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
-            Retry
+            Retry view
           </button>
           <a
             href="/"
-            className="border border-border bg-background px-5 py-2.5 font-mono-tech text-xs uppercase tracking-widest text-foreground transition hover:border-foreground"
+            className="rounded-md border border-border bg-background px-3 py-2 text-base font-semibold text-foreground transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-foreground active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
-            Go home
+            Return home
           </a>
         </div>
       </div>
@@ -72,9 +78,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-const TITLE = "Arpan Sarkar — Automation Engineer & Full-Stack Developer";
+const TITLE = "Arpan Sarkar · Automation Engineer & Full Stack Developer";
 const DESC =
-  "Portfolio of Arpan Sarkar. Graduate Automation Engineer and full-stack developer bridging precision engineering with scalable MERN + TypeScript systems.";
+  "Portfolio of Arpan Sarkar. Graduate Automation Engineer and full stack developer bridging precision engineering with scalable MERN and TypeScript systems.";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
@@ -87,19 +93,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "/profile.jpg" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
+      { name: "twitter:image", content: "/profile.jpg" },
       { name: "theme-color", content: "#F8F7F4" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap",
       },
     ],
   }),
@@ -116,6 +124,12 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:border focus:border-foreground focus:bg-background focus:px-3 focus:py-2 focus:text-sm focus:font-semibold focus:text-foreground focus:outline-2 focus:outline-offset-2 focus:outline-accent"
+        >
+          Skip to main content
+        </a>
         {children}
         <Scripts />
       </body>

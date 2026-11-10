@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 interface RevealProps {
   children: React.ReactNode;
@@ -7,31 +7,67 @@ interface RevealProps {
   className?: string;
 }
 
-export function Reveal({ children, delay = 0, direction = "up", className = "" }: RevealProps) {
-  const directions = {
-    up: { y: 40, x: 0 },
-    down: { y: -40, x: 0 },
-    left: { x: 40, y: 0 },
-    right: { x: -40, y: 0 },
-    none: { x: 0, y: 0 },
-  };
+export function Reveal({
+  children,
+  delay = 0,
+  direction = "up",
+  className = "",
+}: RevealProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
-  const initial = { opacity: 0, ...directions[direction] };
-  const animate = { opacity: 1, x: 0, y: 0 };
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mediaQuery.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mediaQuery.addEventListener("change", handleChange);
+
+    const node = ref.current;
+    if (!node) return () => mediaQuery.removeEventListener("change", handleChange);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "-64px 0px", threshold: 0.08 }
+    );
+
+    observer.observe(node);
+
+    return () => {
+      observer.disconnect();
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []);
+
+  const hiddenTranslate = reducedMotion
+    ? "translate-x-0 translate-y-0"
+    : direction === "up"
+    ? "translate-y-6"
+    : direction === "down"
+    ? "-translate-y-6"
+    : direction === "left"
+    ? "translate-x-6"
+    : direction === "right"
+    ? "-translate-x-6"
+    : "translate-x-0 translate-y-0";
 
   return (
-    <motion.div
-      initial={initial}
-      whileInView={animate}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{
-        duration: 0.6,
-        delay,
-        ease: [0.21, 0.47, 0.32, 0.98], // Custom ease-out
-      }}
-      className={className}
+    <div
+      ref={ref}
+      style={{ transitionDelay: `${Math.round(delay * 1000)}ms` }}
+      className={`transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[opacity,transform] ${
+        visible ? "translate-x-0 translate-y-0 opacity-100" : `${hiddenTranslate} opacity-0`
+      } ${className}`}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

@@ -33,79 +33,82 @@
   --color-ink: var(--ink);
   --color-stone: var(--stone);
 
-  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
 :root {
-  --radius: 0.25rem;
+  --radius: 0.5rem;
 
-  /* Light: architectural ivory / carbon */
-  --background: oklch(0.972 0.006 85);        /* #F8F7F4 stone ivory */
-  --foreground: oklch(0.19 0.005 260);        /* #161616 carbon */
-  --ink: oklch(0.19 0.005 260);
-  --stone: oklch(0.972 0.006 85);
+  /* Light: warm neutral architectural stone & carbon */
+  --background: #F8F7F4;
+  --foreground: #181818;
+  --ink: #181818;
+  --stone: #F1EFEA;
 
-  --card: oklch(0.985 0.004 85);
-  --card-foreground: var(--foreground);
-  --popover: oklch(0.985 0.004 85);
-  --popover-foreground: var(--foreground);
+  --card: #FFFFFF;
+  --card-foreground: #181818;
+  --popover: #FFFFFF;
+  --popover-foreground: #181818;
 
-  --primary: oklch(0.19 0.005 260);
-  --primary-foreground: oklch(0.972 0.006 85);
-  --secondary: oklch(0.94 0.008 85);
-  --secondary-foreground: var(--foreground);
-  --muted: oklch(0.94 0.008 85);
-  --muted-foreground: oklch(0.45 0.01 260);
+  --primary: #181818;
+  --primary-foreground: #F8F7F4;
+  --secondary: #F1EFEA;
+  --secondary-foreground: #181818;
+  --muted: #F1EFEA;
+  --muted-foreground: #66645E;
 
-  /* International Orange accent #FF4A1C-ish */
-  --accent: oklch(0.66 0.22 34);
-  --accent-foreground: oklch(0.985 0.004 85);
+  /* Single desaturated terracotta accent (<80% saturation) */
+  --accent: #C85A32;
+  --accent-foreground: #F8F7F4;
 
-  --destructive: oklch(0.55 0.22 27);
-  --destructive-foreground: oklch(0.985 0.004 85);
+  --destructive: #B93829;
+  --destructive-foreground: #F8F7F4;
 
-  --border: oklch(0.9 0.006 85);
-  --hairline: oklch(0.9 0.006 85);            /* #E5E4E0 */
-  --input: oklch(0.9 0.006 85);
-  --ring: oklch(0.66 0.22 34);
+  --border: #E5E3DC;
+  --hairline: #E5E3DC;
+  --input: #E5E3DC;
+  --ring: #C85A32;
 }
 
 .dark {
-  /* Industrial obsidian */
-  --background: oklch(0.18 0.006 260);        /* charcoal, not pure black */
-  --foreground: oklch(0.95 0.005 85);
-  --ink: oklch(0.95 0.005 85);
-  --stone: oklch(0.22 0.006 260);
+  /* Approved dark surfaces: #000000 · #181818 · #1F1F1F · #272727 · #313131 · #131209 */
+  --background: #181818;
+  --foreground: #F5F5F4;
+  --ink: #F5F5F4;
+  --stone: #1F1F1F;
 
-  --card: oklch(0.21 0.006 260);
-  --card-foreground: oklch(0.95 0.005 85);
-  --popover: oklch(0.21 0.006 260);
-  --popover-foreground: oklch(0.95 0.005 85);
+  --card: #1F1F1F;
+  --card-foreground: #F5F5F4;
+  --popover: #1F1F1F;
+  --popover-foreground: #F5F5F4;
 
-  --primary: oklch(0.95 0.005 85);
-  --primary-foreground: oklch(0.18 0.006 260);
-  --secondary: oklch(0.24 0.006 260);
-  --secondary-foreground: oklch(0.95 0.005 85);
-  --muted: oklch(0.24 0.006 260);
-  --muted-foreground: oklch(0.68 0.01 85);
+  --primary: #F5F5F4;
+  --primary-foreground: #181818;
+  --secondary: #272727;
+  --secondary-foreground: #F5F5F4;
+  --muted: #272727;
+  --muted-foreground: #A8A29E;
 
-  --accent: oklch(0.7 0.2 35);
-  --accent-foreground: oklch(0.14 0.006 260);
+  --accent: #D96B43;
+  --accent-foreground: #181818;
 
-  --destructive: oklch(0.65 0.2 25);
-  --destructive-foreground: oklch(0.98 0 0);
+  --destructive: #C84B31;
+  --destructive-foreground: #F5F5F4;
 
-  --border: oklch(0.3 0.006 260);
-  --hairline: oklch(0.3 0.006 260);
-  --input: oklch(0.3 0.006 260);
-  --ring: oklch(0.7 0.2 35);
+  --border: #313131;
+  --hairline: #313131;
+  --input: #313131;
+  --ring: #D96B43;
 }
 
 @layer base {
   * {
     border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
   }
   html, body {
     background-color: var(--color-background);
@@ -129,28 +132,57 @@
   letter-spacing: 0.02em;
 }
 
-/* Subtle grid backdrop */
-@utility bg-grid {
-  background-image:
-    linear-gradient(to right, var(--color-hairline) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-hairline) 1px, transparent 1px);
-  background-size: 64px 64px;
+/* Approved left-to-right hero heading gradient (text only) */
+.text-hero-gradient {
+  background-image: linear-gradient(to right, #000000, #666666);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.dark .text-hero-gradient {
+  background-image: linear-gradient(to right, #FFFFFF, #9B9B9B);
+}
+
+/* Subtle SVG noise overlay for surface texture (no background gradients) */
+.bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
 }
 
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.4; transform: scale(0.85); }
 }
-@utility animate-pulse-dot { animation: pulse-dot 1.8s ease-in-out infinite; }
+@utility animate-pulse-dot {
+  animation: pulse-dot 2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
 
 @keyframes rise {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@utility animate-rise { animation: rise 0.7s cubic-bezier(.2,.7,.2,1) both; }
+@utility animate-rise {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
 
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
-@utility animate-marquee { animation: marquee 40s linear infinite; }
+@utility animate-marquee {
+  animation: marquee 40s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-rise {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .animate-marquee,
+  .animate-pulse-dot {
+    animation: none;
+  }
+}
